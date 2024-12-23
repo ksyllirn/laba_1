@@ -22,11 +22,14 @@ namespace SimpleFormApp
         private TextBox inputTextBox_3;
         private TextBox outputTextBox_3;
         private ListBox outputListBox_3;
+
+        private Label preinputLabel_4;
+        private ListBox outputListBox_4;
         public MainForm()
         {
-            Text = "Задание 1-3";
-            Width = 1000;
-            Height = 1000;
+            Text = "Задание 1-4";
+            Width = 500;
+            Height = 650;
             StartPosition = FormStartPosition.CenterScreen;
 
             preinputLabel_1 = new Label()
@@ -180,6 +183,26 @@ namespace SimpleFormApp
 
             inputTextBox_3.TextChanged += InputTextBox_TextChanged_3;
 
+            preinputLabel_4 = new Label()
+            {
+                Top = 420,
+                Left = 20,
+                Width = 200,
+            };
+
+            outputListBox_4 = new ListBox()
+            {
+                Top = 460,
+                Left = 20,
+                Width = 200,
+                Height = 80
+            };
+
+            Controls.Add(preinputLabel_4);
+            Controls.Add(outputListBox_4);
+
+            preinputLabel_4.Text = "Результат:";
+            ProcessOutput_4();
         }
 
         private void InputTextBox_TextChanged_1(object sender, EventArgs e)
@@ -274,8 +297,18 @@ namespace SimpleFormApp
                 return $"Неверный формат ввода";
             }
         }
+        private void ProcessOutput_4()
+        {
+            for (double i = 6; i <= 8; i = i + 0.25)
+            {
+                double res = Math.Pow(Math.Log(i),2)/i;
+                outputListBox_4.Items.Add(res);
+            }
+        }
+
 
         [STAThread]
+
         public static void Main()
         {
             Application.EnableVisualStyles();
